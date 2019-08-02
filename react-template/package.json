@@ -1,0 +1,41 @@
+{
+  "name": "react-template",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "env-cmd -r .env-rc.js -e development react-scripts start",
+    "build:test": "env-cmd -r .env-rc.js -e test react-scripts build",
+    "build:production": "env-cmd -r .env-rc.js -e production react-scripts build"
+  },
+  "dependencies": {
+    "history": "^4.9.0",
+    "ramda": "^0.26.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "rxjs": "^6.5.2",
+    "styled-components": "^4.3.2",
+    "styled-normalize": "^8.0.6"
+  },
+  "devDependencies": {
+    "env-cmd": "^9.0.3",
+    "eslint-plugin-import": "^2.18.1",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.4.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
