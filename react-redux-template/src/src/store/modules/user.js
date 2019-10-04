@@ -23,6 +23,7 @@ const getUserEpic = action$ =>
     pluck('payload'),
     switchMap(payload =>
       getUser(payload).pipe(
+        pluck('response'),
         map(action.GET_USER.SUCCESS),
         catchError(action.GET_USER.FAILURE),
       ),

@@ -1,5 +1,5 @@
 import { ajax } from 'rxjs/ajax';
-import { catchError, pluck } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import * as R from 'ramda';
 
@@ -57,6 +57,5 @@ export const request = (path, method = 'GET', queryPicker = []) => body => {
     catchError(error => {
       return throwError(error);
     }),
-    pluck('response'),
   );
 };
