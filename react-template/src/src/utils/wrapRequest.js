@@ -57,6 +57,5 @@ export const request = (path, method = 'GET', queryPicker = []) => body => {
     catchError(error => {
       return throwError(error);
     }),
-    pluck('response'),
   );
 };

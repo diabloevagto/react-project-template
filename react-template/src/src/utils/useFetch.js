@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 export default (apiFetch, body, immediately = false) => {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
+  const [statusCode, setStatusCode] = useState(null);
   const [error, setError] = useState(null);
   const [payload, setPayload] = useState(body);
   const [start, setStart] = useState(immediately);
@@ -20,13 +21,15 @@ export default (apiFetch, body, immediately = false) => {
     doReset();
 
     const subscription = apiFetch(payload).subscribe({
-      next(response) {
-        setResponse(response);
+      next(res) {
+        setResponse(res.response);
+        setStatusCode(res.status);
         setLoading(false);
         setStart(false);
       },
       error(err) {
         setError(err);
+        setStatusCode(err.status);
         setLoading(false);
         setStart(false);
       },
@@ -38,6 +41,7 @@ export default (apiFetch, body, immediately = false) => {
 
   return {
     loading,
+    statusCode,
     error,
     response,
     doStart: useCallback(() => setStart(true), []),
