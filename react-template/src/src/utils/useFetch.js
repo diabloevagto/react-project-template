@@ -45,6 +45,11 @@ export default (apiFetch, body, immediately = false) => {
     error,
     response,
     doStart: useCallback(() => setStart(true), []),
+    doReset: useCallback(() => {
+      setLoading(false);
+      setError(null);
+      setResponse(null);
+    }, []),
     setPayloadAndFetch: useCallback(body => {
       setPayload(body);
       setStart(true);
