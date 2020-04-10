@@ -17,11 +17,11 @@ const type = addUniqueCount({
 const action = createRequestActions(type);
 
 // ------------------------- epic -------------------------
-const getUserEpic = action$ =>
+const getUserEpic = (action$) =>
   action$.pipe(
     ofType(type.GET_USER.REQUEST),
     pluck('payload'),
-    switchMap(payload =>
+    switchMap((payload) =>
       getUser(payload).pipe(
         pluck('response'),
         map(action.GET_USER.SUCCESS),
@@ -39,7 +39,7 @@ const initialState = {
 
 const reducer = handleActions(
   {
-    [type.GET_USER.REQUEST]: produce(draft => {
+    [type.GET_USER.REQUEST]: produce((draft) => {
       draft.isLoading = true;
       draft.response = null;
       draft.error = null;

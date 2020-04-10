@@ -12,7 +12,7 @@ url = '/fake/{a}/b/{c}', body = { a: 'testA', c: 'testC' }
 ***/
 const replaceUrl = (url, body) => {
   const regex = /(\{.+?\})/gi;
-  return url.replace(regex, v => (v[0] === '{' ? body[v.slice(1, -1)] : v));
+  return url.replace(regex, (v) => (v[0] === '{' ? body[v.slice(1, -1)] : v));
 };
 
 const getQueryString = (body, queryPicker) => {
@@ -32,7 +32,7 @@ let _headers = {
   'Content-Type': 'application/json;charset=UTF-8',
 };
 
-export const setHeader = headers => {
+export const setHeader = (headers) => {
   _headers = Object.assign(
     {
       'Content-Type': 'application/json;charset=UTF-8',
@@ -41,7 +41,7 @@ export const setHeader = headers => {
   );
 };
 
-export const request = (path, method = 'GET', queryPicker = []) => body => {
+export const request = (path, method = 'GET', queryPicker = []) => (body) => {
   const _path =
     method === 'GET' && !R.isEmpty(queryPicker)
       ? path + getQueryString(body, queryPicker)
@@ -54,7 +54,7 @@ export const request = (path, method = 'GET', queryPicker = []) => body => {
     crossDomain: true,
     body,
   }).pipe(
-    catchError(error => {
+    catchError((error) => {
       return throwError(error);
     }),
   );

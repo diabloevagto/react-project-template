@@ -50,7 +50,7 @@ export default (apiFetch, body, immediately = false) => {
       setError(null);
       setResponse(null);
     }, []),
-    setPayloadAndFetch: useCallback(body => {
+    setPayloadAndFetch: useCallback((body) => {
       setPayload(body);
       setStart(true);
     }, []),

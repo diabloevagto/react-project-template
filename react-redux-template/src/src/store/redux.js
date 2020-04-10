@@ -21,7 +21,7 @@ const configureStore = () => {
 
 const store = configureStore();
 
-const WrapRedux = props => {
+const WrapRedux = (props) => {
   return <Provider store={store}>{props.children}</Provider>;
 };
 

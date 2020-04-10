@@ -2,13 +2,13 @@ import { createAction } from 'redux-actions';
 
 let count = 0;
 
-const createRequestTypes = baseType => ({
+const createRequestTypes = (baseType) => ({
   REQUEST: `${baseType}_REQUEST`,
   SUCCESS: `${baseType}_SUCCESS`,
   FAILURE: `${baseType}_FAILURE`,
 });
 
-const addUniqueCount = data => {
+const addUniqueCount = (data) => {
   return Object.entries(data).reduce((accumulator, [key, value]) => {
     if (typeof value === 'object') {
       accumulator[key] = addUniqueCount(value, accumulator);
@@ -20,7 +20,7 @@ const addUniqueCount = data => {
 };
 
 // 依據 types 相同結構將 string 換成 createAction(string)
-const createRequestActions = data => {
+const createRequestActions = (data) => {
   return Object.entries(data).reduce((accumulator, [key, value]) => {
     if (typeof value === 'object') {
       accumulator[key] = createRequestActions(value, accumulator);

@@ -7,7 +7,7 @@ import ContextStore from 'src/store';
 export default R.pipe(
   withRouter,
   React.memo,
-)(props => {
+)((props) => {
   const { isLogin, dispatch } = useContext(ContextStore);
   const [id, setId] = useState('');
 
@@ -19,7 +19,7 @@ export default R.pipe(
     <>
       {isLogin === false ? (
         <>
-          <input type="text" onChange={e => setId(e.target.value)} />
+          <input type="text" onChange={(e) => setId(e.target.value)} />
           <button onClick={doLogin}>login</button>
         </>
       ) : (

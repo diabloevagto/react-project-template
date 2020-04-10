@@ -20,7 +20,7 @@ const reducer = (state, action) => {
   }
 };
 
-const WrapContext = props => {
+const WrapContext = (props) => {
   const [{ isLogin, userId }, dispatch] = useReducer(reducer, initStore);
 
   return (
