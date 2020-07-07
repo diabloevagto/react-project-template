@@ -34,6 +34,7 @@ ex. url `/users/{user}`, body `{user: 'facebook'}` 會將 url 替換成 `/users/
 整個網站儲存資料的部分這邊使用 context 跟 redux 兩種，當要新增資料時要同時加上以下部分
 
 - context
+
   - `initStore`
   - `reducer`
   - `WrapContext` 的 `Provider`
@@ -47,14 +48,19 @@ ex. url `/users/{user}`, body `{user: 'facebook'}` 會將 url 替換成 `/users/
 - `GlobalStyles.js` 存放 global css 設定
 - `theme.js` 存放 styled-components 的變數，可以存放色碼之類的東西
 
-### src/utils
+### src/hooks
 
-存放共用工具
+存放 hook 工具
 
 - `useFetch` 呼叫 api 的 hook，傳入 `src/api` 內定義的 methods，使用方法如下
   - `immediately` 可以設定是否一開始就執行
   - `doStart` 無論 `immediately` 設定成什麼，執行 `doStart` 就會打 api 出去，也可以用來重新打 api
   - `setPayloadAndFetch` 設定 api payload 並且會再次 `doStart`
+
+### src/utils
+
+存放共用工具
+
 - `wrapRequest` 包裝 api 處理
 
 ## note
